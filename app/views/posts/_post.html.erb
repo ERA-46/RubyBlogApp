@@ -1,9 +1,14 @@
-<div id="<%= dom_id post %>">
-    <h4><%= post.title %></h4>
-    
-  <div>
-    <strong>Body:</strong>
-    <%= post.body %>
+<div class="card mt-3">
+  <div class="card-body">
+    <div id="<%= dom_id post %>">
+        <h4><%= post.title %></h4>
+        <h6>Posted by : <%= link_to post.user.name, user_path(post.user) %></h6>
+        <h6><%= pluralize(post.views, "view") %></h6>        
+      <div>
+        <strong>Body:</strong>
+        <%= post.body %>
+      </div>
+      <%= link_to "Show this post", post, class:"btn btn-outline-warning mt-3" %>
+    </div>
   </div>
-
 </div>
