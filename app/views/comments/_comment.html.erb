@@ -1,0 +1,37 @@
+<div class="comment-<%= comment.id%> container">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="card-header">
+                <%= comment.user.name %> <br />
+                <% if(comment.updated_at - comment.created_at) > 1 %>
+                    <span>Edited <%= time_ago_in_words(comment.updated_at)%> ago </span>
+                <% else %>
+                    <span>Posted <%= time_ago_in_words(comment.created_at)%> ago </span>
+                <% end %>
+            </div>
+            <p class="card-text">            
+                <% if current_user == comment.user %>
+            </p>
+            <div class="container">
+                <div class="btn-group float-end">
+                    <%= link_to "Edit", nil, remote: :true, class:"btn btn-info mt-2",
+                    data:{
+                        controller: "comments",
+                        action: "comments#toggleForm",
+                        comments_form_param: "edit-form-#{comment.id}",
+                        comments_body_param: "comment-body-#{comment.id}"
+                    }
+                    %>
+                    <%= button_to "Delete", [post, comment], class:"btn btn-danger mt-2", method: :delete%>
+                <% end %>
+                </div>
+            </div>
+            <div id="edit-form-<%= comment.id%>" class="d-none">
+                <%= render 'comments/form', post: @post, comment: comment%>
+            </div>
+            <div class="container mt-2 mb-2" id="comment-body-<%= comment.id %>">
+                <%= comment.body %>
+            </div>
+        </div>
+    </div>
+</div>
