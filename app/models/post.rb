@@ -4,4 +4,7 @@ class Post < ApplicationRecord
     belongs_to :user
     #after_destroy {notify admin of bad behavior}
     has_many :comments, dependent: :destroy
+
+    has_noticed_notifications model_name: 'Notification'
+    has_many :notifications, through: :user, dependent: :destroy
 end
