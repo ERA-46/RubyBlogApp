@@ -1,0 +1,56 @@
+<div class="container">
+    <h4 class="text-center">WELCOME | <%= current_user.name %></h4>
+    <%= render "admin/nav_links" %>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <div class="text-center">
+                <div class="btn-group mt-4">
+                    <%= link_to "Edit", edit_post_path(@post), class:"btn btn-warning" %>
+                    <%= button_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?"}, class:"btn btn-danger" %>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="card-title">
+                <h4>
+                    <strong>Title:</strong> <%= @post.title %>
+                </h4>
+            </div>            
+            <div class="card-subtitle text-muted mx-1">
+                <p>
+                    <strong>Post Views:</strong> <%= @post.views %>
+                </p>
+            </div>
+            <div class="card-title text-muted">
+                <h5><strong>Author:</strong>
+                <%= "#{@post.user.email} | #{@post.user.name} | #{pluralize(@post.user.views, "View")}" %>
+                </h5>
+            </div>
+            <hr/>
+            <div class="row mt-1">
+                <strong>Body:</strong> <%= @post.body %>
+            </div>
+            <hr/>
+            <div class="row mt-2">
+                <strong><%= pluralize(@post.comments.count, "Comment") %>:</strong>
+                <% @post.comments.each do |comment| %>
+                <div class="row mt-1 mx-3">
+                    <%= comment.user.name %>
+                    <%= comment.body %>
+                </div>
+                <% end %>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+</div>
