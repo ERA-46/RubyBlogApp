@@ -78,3 +78,7 @@ gem "noticed", "~> 1.6"
 gem "ransack", "~> 4.0"
 
 gem "friendly_id", "~> 5.5"
+
+gem "bullet", "~> 7.0"
+
+gem "activerecord-import", "~> 1.4"
