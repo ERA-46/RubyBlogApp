@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   
   get 'search', to: 'search#index'
-  get 'users/profile'
+  #get 'users/profile'
   
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   }
 
   get 'u/:id', to: 'users#profile', as: 'user'
+  resources :after_signup
 
   #/posts/1/comments/4
   resources :posts do

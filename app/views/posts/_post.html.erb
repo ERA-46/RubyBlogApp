@@ -2,7 +2,7 @@
   <div class="card-body">
     <div id="<%= dom_id post %>">
         <h4><%= post.title %></h4>
-        <h6>Posted by : <%= link_to post.user.name, user_path(post.user) %></h6>
+        <h6>Posted by : <%= link_to post.user.full_name, user_path(post.user) %></h6>
         <h6><%= pluralize(post.views, "view") %></h6>        
       <div>
         <strong>Body:</strong>

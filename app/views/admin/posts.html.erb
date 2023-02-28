@@ -1,5 +1,5 @@
 <div class="container">
-    <h4 class="text-center">WELCOME | <%= current_user.name %></h4>
+    <h4 class="text-center">WELCOME | <%= current_user.full_name %></h4>
     <%= render "admin/nav_links" %>
 
     <table class="table mt-4">
@@ -16,7 +16,7 @@
                 <tr>
                     <th scope="row"><%= post.id %></th>
                     <td><%= link_to post.title.truncate(15), admin_post_path(post) %></td>
-                    <td><%= post.user.name %></td>
+                    <td><%= post.user.full_name %></td>
                     <td><%= pluralize(post.comments.size, "Comment") %></td>
                 </tr>
             <% end %>
