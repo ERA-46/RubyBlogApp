@@ -102,6 +102,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.12.0)
+    ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -162,10 +163,14 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.14.2-x64-mingw-ucrt)
       racc (~> 1.4)
+    nokogiri (1.14.2-x86_64-linux)
+      racc (~> 1.4)
     noticed (1.6.0)
       http (>= 4.0.0)
       rails (>= 5.2.0)
     orm_adapter (0.5.0)
+    pg (1.4.6)
+    pg (1.4.6-x64-mingw-ucrt)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -225,7 +230,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.0-x64-mingw-ucrt)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     thor (1.2.1)
@@ -240,6 +244,7 @@ GEM
       tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
+    unf_ext (0.0.8.2)
     unf_ext (0.0.8.2-x64-mingw-ucrt)
     uniform_notifier (1.16.0)
     warden (1.2.9)
@@ -263,6 +268,7 @@ GEM
 
 PLATFORMS
   x64-mingw-ucrt
+  x86_64-linux
 
 DEPENDENCIES
   activerecord-import (~> 1.4)
@@ -276,12 +282,12 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   noticed (~> 1.6)
+  pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
   ransack (~> 4.0)
   selenium-webdriver
   sprockets-rails
-  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data

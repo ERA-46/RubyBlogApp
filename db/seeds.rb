@@ -17,29 +17,31 @@ User.create(email: "erajsan@gmail.com",
             password_confirmation: "password",
             name: "Eraj Sanjaya")
 
-posts = []
-comments = []
 
 
-elapsed = Benchmark.measure do    
-    100.times do |i|
+
+elapsed = Benchmark.measure do
+    
+    posts = []
+    #comments = []
+    eranda = User.first
+    eraj = User.second
+
+    1000.times do |i|
         puts "Creating post #{i}"
-        post = Post.create(title: "Lorem ipsum #{i}", 
+        post = Post.new(title: "Lorem ipsum #{i}", 
                 body: "Lorem ipsum dolor sit amet, consectetur adipiscing #{i}", 
-                user_id: User.first.id)
+                user: eranda)
         
-        2.times do |j|
+        10.times do |j|
             puts "Creating comment #{j} for post #{i}"
-            comment = Comment.create(body: "Comment #{j}",
-                            user_id: User.second.id,
-                            post_id: post.id)
+            post.comments.build(body: "Comment #{j}",
+                            user: eraj)
         end
+        posts.push(post)
     end
+    Post.import(posts, recursive: true)
+    #Comment.import(comments)
+    #add activerecord gem with bundler
 end
-
-Post.import(posts)
-Comment.import(comments)
-#add activerecord gem with bundler
-
-
 puts "Elapsed time: #{elapsed.real} seconds"
