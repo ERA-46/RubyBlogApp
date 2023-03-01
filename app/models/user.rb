@@ -42,9 +42,13 @@ class User < ApplicationRecord
     form_steps.index(step.to_s) <= form_steps.index(form_step.to_s)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["email", "name"]
-  end
+  # def self.ransackable_attributes(auth_object = nil)
+  #   ["id","title", "body", "views"]
+  # end
+  
+  # def self.ransackable_associations(auth_object = nil) 
+  #   ["created_at", "updated_at"]
+  # end
 
   private
 

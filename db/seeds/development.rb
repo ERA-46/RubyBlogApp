@@ -35,6 +35,12 @@ Address.first_or_create!(street: "Rua Santa",
                         country: "Brasil",
                         user: eraj)
 
+category = Category.first_or_create!(name:"Uncategorized", display_in_nav: true)
+Category.first_or_create!(name:"Categorized", display_in_nav: false)
+Category.first_or_create!(name:"Car", display_in_nav: true)
+Category.first_or_create!(name:"Bike", display_in_nav: true)
+
+
 elapsed = Benchmark.measure do
     
     posts = []
@@ -42,7 +48,9 @@ elapsed = Benchmark.measure do
         puts "Creating post #{i}"
         post = Post.new(title: "Lorem ipsum #{i}", 
                 body: "Lorem ipsum dolor sit amet, consectetur adipiscing #{i}", 
-                user: eranda)
+                user: eranda,
+                category: category)
+
         
         5.times do |j|
             puts "Creating comment #{j} for post #{i}"

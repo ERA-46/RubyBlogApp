@@ -7,10 +7,10 @@
             </span>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-            <p class="text-success mx-3">New Notifications</p>
             <% @unread.each do |notification|%>
                 <li>
-                <%= render 'layouts/notification', notification: notification %>
+                    <p class="text-success mx-3">New Notifications</p>
+                    <%= render 'layouts/notification', notification: notification %>
                 </li>
             <% end %>
             <% if @read.count > 0 && @unread.count > 0 %>

@@ -1,6 +1,9 @@
 <%= search_form_for(@query, url: search_path, method: :get, class:'d-flex') do |form| %>
-  <%= form.search_field :title_or_views_cont,
+  <%= form.search_field :title_i_cont_any,
    placeholder: "Search...",
    class:"form-control" %>
   <%= form.submit "Search", class:"btn btn-outline-primary mx-3" %>
 <% end %>
+
+
+  
