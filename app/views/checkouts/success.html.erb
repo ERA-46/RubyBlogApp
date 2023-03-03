@@ -1,0 +1,17 @@
+
+<div class="row mt-5">
+    <h4>Success!</h4><hr/>
+    <div class="col-sm">
+        <% @line_items.each do |item| %>
+        <p><%= item.description %></p> <br/>  
+    </div>
+    <div class="col-sm">
+        <p>Item Price : $<%= @session.amount_total.to_f / 100 %></p>   
+    </div>
+    <div class="col-sm">
+        <% product = Stripe::Product.retrieve(item.price.product)%>
+        <%= image_tag(product.images.first, width: 300) %>   
+        <% end %>
+    </div>
+    <hr/>
+</div>

@@ -7,9 +7,13 @@ Rails.application.routes.draw do
     get 'admin/users'
     get 'admin/show_post/:id', to: 'admin#show_post', as: 'admin_post'
   end
-  
+
+  #root for the checkout page
+  get 'checkout', to: 'checkouts#show'
+  get 'checkout/success', to: 'checkouts#success'
+  get 'billing', to: 'billing#show'
+
   get 'search', to: 'search#index'
-  #get 'users/profile'
   
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -17,12 +21,15 @@ Rails.application.routes.draw do
   }
 
   get 'u/:id', to: 'users#profile', as: 'user'
+
   resources :after_signup
 
   #add routing for categories 
   resources :categories
 
   resources :posts
+
+  resources :members
 
 
   #/posts/1/comments/4

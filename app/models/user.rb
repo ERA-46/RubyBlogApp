@@ -1,11 +1,16 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  include Pay::Billable
+  
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
+
+  pay_customer stripe_attributes: :stripe_attributes
+
   has_one_attached :avatar
   
   has_one :address, dependent: :destroy, inverse_of: :user, autosave: true
@@ -50,6 +55,19 @@ class User < ApplicationRecord
   # def self.ransackable_associations(auth_object = nil) 
   #   ["created_at", "updated_at"]
   # end
+
+  def stripe_attributes(pay_customer)
+    {
+      address: {
+        city: pay_customer.owner.city,
+        country: pay_customer.owner.country
+      },
+      metadata: {
+        pay_customer_id: pay_customer.id,
+        user_id: id
+      }
+    }
+  end
 
   private
 

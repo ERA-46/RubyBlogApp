@@ -1,0 +1,17 @@
+<div class="container">
+    <h4>Checkout Item</h4>
+    <div class="row">
+        <div class="col-sm">
+        
+        </div>
+        <div class="col-sm">
+            <%= render partial: "pay/stripe/checkout_button", locals: {
+                session: @checkout_session,
+                title: "Checkout"
+            } %>
+        </div>
+        <div class="col-sm">
+        
+        </div>
+    </div>
+</div>

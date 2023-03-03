@@ -84,3 +84,19 @@ gem "bullet", "~> 7.0"
 gem "activerecord-import", "~> 1.4"
 
 gem "wicked", "~> 2.0"
+
+gem "pay", "~> 6.3.1"
+
+# To use Stripe, also include:
+gem "stripe", "~> 8.3.0"
+
+# To use Braintree + PayPal, also include:
+gem "braintree", "~> 4.7"
+
+# To use Paddle, also include:
+gem "paddle_pay", "~> 0.2"
+
+# To use Receipts gem for creating invoice and receipt PDFs, also include:
+gem "receipts", "~> 2.0"
+
+gem "dotenv-rails"

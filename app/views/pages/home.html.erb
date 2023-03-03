@@ -2,7 +2,18 @@
     <h4>Home</h4>
     <div class="links mt-5">
         <%= link_to "About", about_path, class:"btn btn-info px-4"%>
-        <%= link_to "Posts", posts_path, class:"btn btn-info mx-2 px-4"%>   
+        <%= link_to "Posts", posts_path, class:"btn btn-info mx-2 px-4"%>
+        <%= link_to "Store", checkout_path(
+            line_items: 'price_1Mh6b5KjFELnaoo92FNmOYDm',
+            payment_mode: 'payment'
+        ), class:"btn btn-info mx-2 px-4" %>
+        <%= link_to "Subscribe to Monthly service", checkout_path(
+            line_items: ['price_1MhShjKjFELnaoo9gcv3fpb2'],
+            payment_mode: 'subscription'
+        ), class:"btn btn-secondary mx-2 px-4" %>
+
+        <h6 class="mt-5"><%= link_to "Manage Billing", @portal_session.url unless @portal_session.nil? %></h6>
+
     </div>
 </div>
 
