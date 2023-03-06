@@ -1,0 +1,12 @@
+<h1>Editing project</h1>
+
+<%= render "form", project: @project %>
+
+<br>
+
+<div class="row mb-2 mx-2">
+    <%= link_to "Show this project", @project, class:"btn btn-outline-info" %>
+</div>
+<div class="row mb-5 mx-2">
+    <%= link_to "Back to projects", projects_path, class:"btn btn-outline-secondary" %>
+</div>
