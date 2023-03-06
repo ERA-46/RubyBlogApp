@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get 'admin/show_post/:id', to: 'admin#show_post', as: 'admin_post'
   end
 
+  patch 'drag/project'
+
   #root for the checkout page
   get 'checkout', to: 'checkouts#show'
   get 'checkout/success', to: 'checkouts#success'

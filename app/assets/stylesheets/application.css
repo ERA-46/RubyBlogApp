@@ -16,3 +16,11 @@
 .text-justify {
     text-align: justify;
 }
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
