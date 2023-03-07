@@ -5,13 +5,20 @@
 <div class="card mb-5" id="projects">
   <% @projects.each do |project| %>
     <% if current_user&.admin? %>
-      <%= render "projects/draggable", project: project %>
+      <div class="card-body">
+        <div class="card-text">
+          <div class="d-flex flex-column mt-3 mb-3 mx-2">            
+            <%= render "projects/draggable", project: project %>
+          </div>
+        </div>
+      </div>
     <% else %>
       <div class="card-body">
         <div class="card-text">
           <%= render project %>
           <div class="d-flex flex-column mt-3 mb-3 mx-2">
             <%= link_to "Show this project", project, class:"btn btn-outline-secondary" %>
+            <hr/>
           </div>
         </div>
       </div>
