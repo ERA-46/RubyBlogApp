@@ -1,15 +1,25 @@
 <div class="container">
 <div class="card mt-3">
-  <div class="card-header">
+  <div class="row mx-4 py-3">
     <h3>Posts</h3>
     <%= link_to "New post", new_post_path, class:"btn btn-info mt-2 mb-2 py-2 px-5" %>
   </div>
 </div>
 
   <div id="posts">
-    <% @posts.each do |post| %>
-      <%= render post %>
-      <%= link_to "Show this post", post, class:"btn btn-outline-warning mt-3" %>
-    <% end %>
+    <div class="card mt-3 mb-5">
+      <div class="card-body mx-1">
+        <% @posts.each do |post| %>
+        <h4><%= post.title %></h4>
+        <h6>Posted by : <%= link_to post.user.full_name, user_path(post.user) %></h6>
+        <h6><%= pluralize(post.views, "view") %></h6>        
+        <strong>Body:</strong>
+        <%= post.body %>
+        <div class="row mx-1">
+          <%= link_to "Show this post", post, class:"btn btn-outline-secondary mt-4" %>
+        </div>
+        <hr/>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
