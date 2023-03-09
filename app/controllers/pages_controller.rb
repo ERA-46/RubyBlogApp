@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
   def home
     #console
-    Rails.logger.info('Pages#home') do
-      'Home page rendered'
-    end
+    #Rails.logger.debug('Pages#home') do
+      #'Home page rendered'
+    #end
 
     return unless current_user
     return if current_user.payment_processor.nil?

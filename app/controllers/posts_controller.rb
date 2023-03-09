@@ -4,14 +4,14 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:user, :rich_text_body).all.order(created_at: :desc)
+    @posts = Post.includes(:user, :rich_text_body).all.order(updated_at: :asc)
 
   end
 
   # GET /posts/1 or /posts/1.json
   def show
     @post.update(views: @post.views + 1)
-    @comments = @post.comments.includes(:user, :rich_text_body).order(created_at: :desc)
+    @comments = @post.comments.includes(:user, :rich_text_body).order(updated_at: :asc)
     
     ahoy.track 'Viewed Post', post_id: @post.id
     mark_notifications_as_read
