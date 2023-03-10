@@ -4,8 +4,8 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:user, :rich_text_body).all.order(updated_at: :asc)
-
+    @posts = Post.includes(:user, :rich_text_body).all.order(updated_at: :asc).with_attached_image
+    #@image = Post.image
   end
 
   # GET /posts/1 or /posts/1.json
@@ -15,7 +15,6 @@ class PostsController < ApplicationController
     
     ahoy.track 'Viewed Post', post_id: @post.id
     mark_notifications_as_read
-
   end
 
   # GET /posts/new
@@ -79,7 +78,8 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :category_id)
+      #if there are many image uploads, change the :image params into images: []
+      params.require(:post).permit(:title, :body, :category_id, :image)
     end
 
     def mark_notifications_as_read

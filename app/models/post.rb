@@ -5,6 +5,11 @@ class Post < ApplicationRecord
     belongs_to :user
     belongs_to :category
 
+    #single image upload
+    has_one_attached :image
+    #many image upload
+    #has_many_attached :images
+
     #after_destroy {notify admin of bad behavior}
     has_many :comments, dependent: :destroy
 
